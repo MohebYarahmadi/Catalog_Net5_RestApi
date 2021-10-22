@@ -1,0 +1,12 @@
+obj
+bin
+appsettings.json
+*.db
+*.rdb
+settings.json
+publish
+wwwroot
+.idea
+ssh.pub
+ssh
+.vscode

@@ -39,8 +39,8 @@ namespace Catalog
 			BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 			BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
 
-			// var mongoDbSettings = Configuration.GetSection(nameof(AtlasMongoDb)).Get<AtlasMongoDb>();	// for AtlasMongoDb
-			var mongoDbSettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>(); // for local mongodb
+			var mongoDbSettings = Configuration.GetSection(nameof(AtlasMongoDb)).Get<AtlasMongoDb>();	// for AtlasMongoDb
+			// var mongoDbSettings = Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>(); // for local mongodb
 
 			services.AddSingleton<IMongoClient>(serviceProvider =>
 			{
@@ -77,7 +77,10 @@ namespace Catalog
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1"));
 			}
 
-			app.UseHttpsRedirection();
+			if (env.IsDevelopment())
+			{
+				app.UseHttpsRedirection();
+			}
 
 			app.UseRouting();
 
