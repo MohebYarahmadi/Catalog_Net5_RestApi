@@ -1,0 +1,44 @@
+@baseUrl = https://localhost:5001
+@collection = items
+@id = 39b785f8-fc92-43f6-8aba-e48f7958fa8f
+###
+
+# @name GetAllItems
+GET {{baseUrl}}/{{collection}} HTTP/1.1
+
+###
+
+# @name GetItemById
+GET {{baseUrl}}/{{collection}}/{{id}} HTTP/1.1
+
+###
+
+# @name CreateAnItem
+POST {{baseUrl}}/{{collection}} HTTP/1.1
+Content-Type: application/json
+
+< ./ItemData/item.json
+
+###
+
+# @name CreateAnItemWithErro
+POST {{baseUrl}}/{{collection}} HTTP/1.1
+Content-Type: application/json
+
+< ./ItemData/itemWithError.json
+
+###
+
+# @name UpdateAnItemById
+PUT {{baseUrl}}/{{collection}}/{{id}} HTTP/1.1
+Content-Type: application/json
+
+< ./ItemData/itemToUpdate.json
+###
+
+# @name DeleteAnItemById
+DELETE {{baseUrl}}/{{collection}}/{{id}} HTTP/1.1
+
+###
+
+# Other verbs

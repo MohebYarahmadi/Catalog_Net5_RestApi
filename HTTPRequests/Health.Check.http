@@ -1,0 +1,14 @@
+@baseUrl = https://localhost:5001
+@collection = health
+@id = 39b785f8-fc92-43f6-8aba-e48f7958fa8f
+###
+
+# @name HealthLive
+GET {{baseUrl}}/{{collection}}/live HTTP/1.1
+
+###
+
+# @name HealthReady
+GET {{baseUrl}}/{{collection}}/ready HTTP/1.1
+
+###
